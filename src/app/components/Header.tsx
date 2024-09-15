@@ -75,7 +75,7 @@ const Header: React.FC = () => {
       </div>
 
       {/* Icons/Features section */}
-      <div className="flex flex-wrap gap-6 justify-around py-4 bg-white px-64 lg:x-44" >
+      <div className="flex flex-wrap gap-6 justify-around py-4 bg-white lg:px-64 lg:x-44" >
         <div className="flex flex-row  items-center text-center">
           <RiArrowGoBackFill size={27} opacity={0.9} />
           <PiLineVerticalThin size={45} opacity={0.9} />
