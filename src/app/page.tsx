@@ -1,8 +1,7 @@
 import Header from './components/Header'
 import Tendencias from './components/Tendencias'
 import Categorias from './components/Categorias'
-import Accesorios from './components/Accesorios'
-import Calzado from './components/Calzado'
+import AccesoriosCalzado from './components/AccesoriosCalzado'
 import OutfitIA from './components/OutfitIA'
 import DescubreMas from './components/DescubreMas'
 
@@ -12,8 +11,7 @@ export default function Home() {
       <Header />
       <Tendencias />
       <Categorias />
-      <Accesorios />
-      <Calzado />
+      <AccesoriosCalzado />
       <OutfitIA />
       <DescubreMas />
     </>
