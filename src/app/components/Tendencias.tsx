@@ -34,10 +34,10 @@ const Tendencias: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-5">
         {/* Aquí llamamos al componente Tendencia con la imagen y el título */}
-        <Tendencia title="Verano" imgSrc="/path/to/verano.jpg" />
-        <Tendencia title="Aesthetic" imgSrc="/path/to/aesthetic.jpg" />
-        <Tendencia title="Elegante" imgSrc="/path/to/elegante.jpg" />
-        <Tendencia title="Tendencia" imgSrc="/path/to/tendencia.jpg" />
+        <Tendencia title="Verano" imgSrc="/verano.jpg" />
+        <Tendencia title="Aesthetic" imgSrc="/aesthetic.jpg" />
+        <Tendencia title="Elegante" imgSrc="/elegante.jpg" />
+        <Tendencia title="Tendencia" imgSrc="/tendencia.jpg" />
       </div>
     </section>
   );
