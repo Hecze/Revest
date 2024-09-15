@@ -32,7 +32,7 @@ const DescubreMas = () => {
       <h2 className="text-2xl font-bold text-center mb-6">Descubre más de REVEST</h2>
       <div className="flex flex-wrap gap-2 md:px-24 justify-center items-stretch">
         <DiscoverItem
-          src="/descubre1.png"
+          src="/descubre1.webp"
           alt="Descubre 1"
           text="Disfruta el outfit de tus sueños... y ahorra para lo que más quieras"
         />
@@ -42,7 +42,7 @@ const DescubreMas = () => {
           text="Encuentra la moda que se adapta a ti sin perder tu esencia"
         />
         <DiscoverItem
-          src="/descubre3.png"
+          src="/descubre3.webp"
           alt="Descubre 3"
           text="Proceso de cuidado y desifección de nuestras prendas"
         />
