@@ -30,10 +30,6 @@ const Tendencia: React.FC<TendenciaProps> = ({ title, imgSrc }) => {
 const Tendencias: React.FC = () => {
   return (
     <section className="">
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold">Tendencias que no te puedes perder</h2>
-      </div>
-
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
         {/* Aquí llamamos al componente Tendencia con la imagen y el título */}
         <Tendencia title="Verano" imgSrc="/verano.png" />
