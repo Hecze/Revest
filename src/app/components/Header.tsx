@@ -6,7 +6,7 @@ import { PiPackage } from "react-icons/pi";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { IoPersonOutline } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
-
+import { PiLineVerticalThin } from "react-icons/pi";
 
 
 const Header: React.FC = () => {
@@ -54,17 +54,18 @@ const Header: React.FC = () => {
       </div>
 
       {/* Main banner section */}
-      <div className="relative w-full h-64 bg-gray-400">
+      <div className="relative w-full  flex flex-col  h-64 bg-[#EF9A9C] overflow-hidden">
         {/* Banner Image Placeholder */}
         <Image
-          src="/banner-image.png" // Reemplazar con la ruta correcta de la imagen del banner
+          src="/header-modelo.png" // Reemplazar con la ruta correcta de la imagen del banner
           alt="Tendencias que no te puedes perder"
-          layout="fill"
+          width={300}
+          height={300}
           objectFit="cover"
-          className="rounded-md"
+          className="rounded-md lg:ml-[32rem]"
         />
         {/* Text overlay on banner */}
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
+        <div className="absolute inset-0  flex flex-col justify-center items-center text-center">
           <h1 className="text-4xl font-bold text-white">TENDENCIAS</h1>
           <p className="text-xl text-white">que no te puedes perder</p>
           <button className="bg-black text-white px-6 py-2 mt-4 rounded-md">
@@ -74,30 +75,34 @@ const Header: React.FC = () => {
       </div>
 
       {/* Icons/Features section */}
-      <div className="flex flex-wrap gap-6 justify-around py-4 bg-white px-4 lg:x-44" >
-        <div className="flex flex-row  items-center text-center gap-6">
-          <RiArrowGoBackFill size={35} />
+      <div className="flex flex-wrap gap-6 justify-around py-4 bg-white px-64 lg:x-44" >
+        <div className="flex flex-row  items-center text-center">
+          <RiArrowGoBackFill size={27} opacity={0.9} />
+          <PiLineVerticalThin size={45} opacity={0.9} />
           <div className="flex flex-col">
             <p className="text-sm">DEVOLUCIÓN SIMPLE</p>
             <p className="text-xs text-gray-500">HASTA 72HS</p>
           </div>
         </div>
-        <div className="flex flex-row items-center text-center gap-6">
-          <IoTicketOutline size={35} />
+        <div className="flex flex-row items-center text-center">
+          <IoTicketOutline size={27} opacity={0.9} />
+          <PiLineVerticalThin size={45} opacity={0.9} />
           <div className="flex flex-col">
             <p className="text-sm">MODA CIRCULAR</p>
             <p className="text-xs text-gray-500">EN PERFECTO ESTADO</p>
           </div>
         </div>
-        <div className="flex flex-row items-center text-center gap-6">
-          <PiPackage size={35} />
+        <div className="flex flex-row items-center text-center">
+          <PiPackage size={27} opacity={0.9} />
+          <PiLineVerticalThin size={45} opacity={0.9} />
           <div className="flex flex-col">
             <p className="text-sm">ENVÍO GRATIS</p>
             <p className="text-xs text-gray-500">EN CUALQUIER COMPRA</p>
           </div>
         </div>
-        <div className="flex flex-row items-center text-center gap-6">
-          <RiMoneyDollarCircleLine size={35} />
+        <div className="flex flex-row items-center text-center">
+          <RiMoneyDollarCircleLine size={27} opacity={0.9} />
+          <PiLineVerticalThin size={45} opacity={0.9} />
           <div className="flex flex-col">
             <p className="text-sm">PRECIOS INCREIBLES</p>
             <p className="text-xs text-gray-500">HASTA 70% OFF</p>
