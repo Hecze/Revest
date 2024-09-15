@@ -34,7 +34,7 @@ const Tendencias: React.FC = () => {
         <h2 className="text-2xl font-bold">Tendencias que no te puedes perder</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
         {/* Aquí llamamos al componente Tendencia con la imagen y el título */}
         <Tendencia title="Verano" imgSrc="/verano.png" />
         <Tendencia title="Aesthetic" imgSrc="/aesthetic.png" />

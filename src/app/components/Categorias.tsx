@@ -27,8 +27,8 @@ const Categoria: React.FC<CategoriaProps> = ({ title, imgSrc }) => {
 
 const Categorias: React.FC = () => {
   return (
-    <section className="bg-gray-100 py-10 px-44">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-5">
+    <section className="bg-gray-100 py-10 px-4 sm:px-12 md:px-24 xl:px-56">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-24">
         {/* Componente Categoria con título y ruta de imagen */}
         <Categoria title="Hombres" imgSrc="/hombres.png" />
         <Categoria title="Mujeres" imgSrc="/mujeres.png" />
