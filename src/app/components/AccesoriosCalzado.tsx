@@ -42,7 +42,7 @@ const ProductoPequeno: React.FC<{ imgSrc: string; altText: string }> = ({ imgSrc
 // Componente principal Accesorios & Calzado
 const AccesoriosCalzado: React.FC = () => {
   return (
-    <section className="bg-gray-100 py-10  px-4 sm:px-12 md:px-24 xl:px-36">
+    <section className="bg-gray-100 py-10 px-4 sm:px-12 md:px-24 xl:px-56">
       <div className="grid grid-col-2 sm:grid-col-4 lg:grid-cols-5 gap-2 ">
 
         {/* Primer div grande (Accesorios) */}
