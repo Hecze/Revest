@@ -25,3 +25,49 @@ body {
     text-wrap: balance;
   }
 }
+
+
+/* Archivo styles.css */
+
+section {
+  background-color: #e8ebf0;
+  /* bg-gray-200 */
+  padding-top: 2.5rem;
+  /* py-10 */
+  padding-bottom: 2.5rem;
+  padding-left: 1rem;
+  /* px-4 (base) */
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  section {
+    padding-left: 3rem;
+    /* sm:px-12 */
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-left: 6rem;
+    /* md:px-24 */
+    padding-right: 6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  section {
+    padding-left: 12rem;
+    /* xl:px-56 */
+    padding-right: 12rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  section {
+    padding-left: 16rem;
+    /* xl:px-56 */
+    padding-right: 16rem;
+  }
+}

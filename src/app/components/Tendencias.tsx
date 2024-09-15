@@ -29,7 +29,7 @@ const Tendencia: React.FC<TendenciaProps> = ({ title, imgSrc }) => {
 
 const Tendencias: React.FC = () => {
   return (
-    <section className="bg-gray-200 py-10  px-4 sm:px-12 md:px-24 xl:px-56">
+    <section className="">
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold">Tendencias que no te puedes perder</h2>
       </div>
