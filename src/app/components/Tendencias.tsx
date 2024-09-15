@@ -7,13 +7,14 @@ interface TendenciaProps {
 
 const Tendencia: React.FC<TendenciaProps> = ({ title, imgSrc }) => {
   return (
-    <div className="relative h-[450px] w-full shadow-md cursor-pointer hover:opacity-90 transition">
-      {/* Imagen de la tendencia */}
+    <div className="relative h-[30rem] xl:h-[45rem] w-full shadow-md cursor-pointer hover:opacity-90 transition">
+      {/* Imagen de la tendencia justificada a la parte superior */}
       <Image
         src={imgSrc}
         alt={title}
         layout="fill"
         objectFit="cover"
+        objectPosition="top"
         className=""
       />
 
@@ -27,7 +28,7 @@ const Tendencia: React.FC<TendenciaProps> = ({ title, imgSrc }) => {
 
 const Tendencias: React.FC = () => {
   return (
-    <section className="bg-gray-200 py-10 px-24">
+    <section className="bg-gray-200 py-10  px-4 sm:px-12 md:px-24 xl:px-36">
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold">Tendencias que no te puedes perder</h2>
       </div>
