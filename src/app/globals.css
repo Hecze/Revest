@@ -34,7 +34,7 @@ section {
   /* bg-gray-200 */
   padding-top: 2.5rem;
   /* py-10 */
-  padding-bottom: 2.5rem;
+  padding-bottom: 1rem;
   padding-left: 1rem;
   /* px-4 (base) */
   padding-right: 1rem;
@@ -45,6 +45,7 @@ section {
     padding-left: 3rem;
     /* sm:px-12 */
     padding-right: 3rem;
+    padding-bottom: 1.5rem;
   }
 }
 
@@ -53,6 +54,7 @@ section {
     padding-left: 6rem;
     /* md:px-24 */
     padding-right: 6rem;
+    padding-bottom: 2rem;
   }
 }
 
@@ -61,6 +63,7 @@ section {
     padding-left: 12rem;
     /* xl:px-56 */
     padding-right: 12rem;
+    padding-bottom: 2.5rem;
   }
 }
 
