@@ -47,23 +47,23 @@ const AccesoriosCalzado: React.FC = () => {
 
         {/* Primer div grande (Accesorios) */}
         <ProductoGrande
-          imgSrc="/path/to/backpack.png"
+          imgSrc="/mochila.png"
           title="ACCESORIOS"
           description="Desde casual hasta elegante, un accesorio para cada ocasión"
           bgColor="bg-orange-100"
         />
 
         {/* Imágenes pequeñas (Productos individuales) */}
-        <ProductoPequeno imgSrc="/path/to/shoes1.png" altText="Zapato 1" />
-        <ProductoPequeno imgSrc="/path/to/shoes2.png" altText="Zapato 2" />
+        <ProductoPequeno imgSrc="/zapato1.png" altText="Zapato 1" />
+        <ProductoPequeno imgSrc="/zapato2.png" altText="Zapato 2" />
 
         {/* Segunda fila de imágenes pequeñas */}
-        <ProductoPequeno imgSrc="/path/to/shoes3.png" altText="Zapato 3" />
-        <ProductoPequeno imgSrc="/path/to/shoes4.png" altText="Zapato 4" />
+        <ProductoPequeno imgSrc="/zapato3.png" altText="Zapato 3" />
+        <ProductoPequeno imgSrc="/zapato4.png" altText="Zapato 4" />
 
         {/* Segundo div grande (Calzado) */}
         <ProductoGrande
-          imgSrc="/path/to/shoe-large.png"
+          imgSrc="/zapatillas.png"
           title="CALZADO"
           description="Desde casual hasta elegante, un accesorio para cada ocasión"
           bgColor="bg-gray-800 text-white"
