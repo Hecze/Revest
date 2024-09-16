@@ -49,7 +49,7 @@ export default function ClothingPage({ params }: Props) {
             <div className="flex flex-col md:flex-row gap-8 mb-8">
                 <div className="md:w-1/2">
                     <Image
-                        src="/placeholder.svg?height=600&width=600"
+                        src="/IA-2.png?height=600&width=600"
                         alt={productData.name}
                         width={600}
                         height={600}
