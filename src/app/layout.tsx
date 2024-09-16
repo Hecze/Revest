@@ -60,9 +60,9 @@ export default function RootLayout({
               <button className="flex items-center">
                 <FiShoppingCart size={24} />
               </button>
-              <button className="bg-black text-white px-4 py-2 rounded-md">
+              <Link className="bg-black text-white px-4 py-2 rounded-md" href={"/membership"}>
                 Suscribirse
-              </button>
+              </Link>
             </div>
           </div>
         </header>
