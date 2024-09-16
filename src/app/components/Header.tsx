@@ -1,7 +1,116 @@
-const Header = () => {
+import React from 'react';
+import Image from 'next/image';
+import { RiArrowGoBackFill, RiMoneyDollarCircleLine } from "react-icons/ri";
+import { IoTicketOutline, IoPersonOutline } from "react-icons/io5";
+import { PiPackage, PiLineVerticalThin } from "react-icons/pi";
+import { FiShoppingCart } from "react-icons/fi";
+
+// Componente reutilizable para características con íconos
+interface IconFeatureProps {
+  Icon: React.ElementType;
+  title: string;
+  subtitle: string;
+}
+
+const IconFeature: React.FC<IconFeatureProps> = ({ Icon, title, subtitle }) => (
+  <div className="flex flex-row items-center text-center">
+    <Icon size={27} opacity={0.9} />
+    <PiLineVerticalThin size={45} opacity={0.9} />
+    <div className="flex flex-col">
+      <p className="text-sm">{title}</p>
+      <p className="text-xs text-gray-500">{subtitle}</p>
+    </div>
+  </div>
+);
+
+// Componente reutilizable para la barra de búsqueda
+const SearchBar: React.FC = () => (
+  <div className="flex-grow max-w-md mx-4">
+    <input
+      type="text"
+      placeholder="Buscar producto, categoría, marca..."
+      className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+);
+
+// Componente para la sección del banner
+const BannerSection: React.FC = () => (
+  <div className="relative w-full flex flex-col h-64 bg-[#EF9A9C] overflow-hidden">
+    <Image
+      src="/header-modelo.png"
+      alt="Tendencias que no te puedes perder"
+      width={300}
+      height={300}
+      objectFit="cover"
+      className="rounded-md lg:ml-[32rem]"
+    />
+    <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
+      <h1 className="text-4xl font-bold text-white">TENDENCIAS</h1>
+      <p className="text-xl text-white">que no te puedes perder</p>
+      <button className="bg-black text-white px-6 py-2 mt-4 rounded-md">VER COLECCIÓN</button>
+    </div>
+  </div>
+);
+
+const Header: React.FC = () => {
   return (
-    <header className="bg-gray-100 p-5 text-center">
-      <h1 className="text-3xl font-bold">REVEST</h1>
+    <header className="bg-white border-b border-gray-200">
+      {/* Top bar with logo and navigation */}
+      <div className="flex justify-between items-center lg:px-72 py-4">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <Image
+            src="/logo.png"
+            alt="Revest Logo"
+            width={120}
+            height={40}
+          />
+        </div>
+
+        {/* Search bar */}
+        <SearchBar />
+
+        {/* Icons for cart, user, and menu */}
+        <div className="items-center space-x-6 hidden lg:flex ">
+          <button className="flex items-center">
+            <IoPersonOutline size={24} />
+          </button>
+          <button className="flex items-center">
+            <FiShoppingCart size={24} />
+          </button>
+          <button className="bg-black text-white px-4 py-2 rounded-md">
+            Suscribirse
+          </button>
+        </div>
+      </div>
+
+      {/* Main banner section */}
+      <BannerSection />
+
+      {/* Icons/Features section */}
+      <div className="flex flex-wrap gap-6 justify-around py-4 bg-white lg:px-64 lg:x-44">
+        <IconFeature
+          Icon={RiArrowGoBackFill}
+          title="DEVOLUCIÓN SIMPLE"
+          subtitle="HASTA 72HS"
+        />
+        <IconFeature
+          Icon={IoTicketOutline}
+          title="MODA CIRCULAR"
+          subtitle="EN PERFECTO ESTADO"
+        />
+        <IconFeature
+          Icon={PiPackage}
+          title="ENVÍO GRATIS"
+          subtitle="EN CUALQUIER COMPRA"
+        />
+        <IconFeature
+          Icon={RiMoneyDollarCircleLine}
+          title="PRECIOS INCREIBLES"
+          subtitle="HASTA 70% OFF"
+        />
+      </div>
     </header>
   );
 };

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Image from 'next/image';
 
 // Componente para productos grandes (ocupan 3 columnas)
@@ -14,9 +15,9 @@ const ProductoGrande: React.FC<{ imgSrc: string; title: string; description: str
       <div className='flex flex-col justify-center items-center text-center'>
         <h2 className="text-2xl font-bold">{title}</h2>
         <p className="mt-2">{description}</p>
-        <button className="mt-6 bg-black text-white py-2 px-4 hover:bg-gray-700 w-64">
+        <Link className="mt-6 bg-black text-white py-2 px-4 hover:bg-gray-700 w-64" href={'/catalog'} >
           Ver colección
-        </button>
+        </Link>
       </div>
 
     </div>
