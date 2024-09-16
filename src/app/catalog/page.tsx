@@ -134,14 +134,14 @@ export default function ClothingCatalog() {
         </div>
       </header>
 
-      <main className="flex-grow container mx-auto px-4 py-8 flex flex-col md:flex-row">
+      <main className="flex-grow container mx-auto my-12  flex flex-col md:flex-row">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" className="mb-4 md:hidden">
               <Filter className="mr-2 h-4 w-4" /> Filtros
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="bg-white w-[300px] sm:w-[400px]">
+          <SheetContent side="left" className="bg-white w-[300px]  sm:w-[400px]">
             <SheetHeader>
               <SheetTitle>Filtros</SheetTitle>
             </SheetHeader>
@@ -158,7 +158,7 @@ export default function ClothingCatalog() {
           </SheetContent>
         </Sheet>
 
-        <aside className="w-64 pr-8 hidden md:block">
+        <aside className="w-[30rem] py-6 px-12 hidden md:block bg-white rounded-xl">
           <h2 className="text-lg font-semibold mb-4">Filtros</h2>
           <Filters
             filters={filters}
@@ -170,8 +170,8 @@ export default function ClothingCatalog() {
           />
         </aside>
 
-        <section className="flex-grow">
-          <div className="mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+        <div className="flex-grow px-4">
+          <div className=" mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white rounded-xl py-6  px-12">
             <span className="mb-2 sm:mb-0">Mostrando {(currentPage - 1) * productsPerPage + 1}-{Math.min(currentPage * productsPerPage, sortedProducts.length)} de {sortedProducts.length} productos</span>
             <div className="flex space-x-2">
               <Button
@@ -194,16 +194,16 @@ export default function ClothingCatalog() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {paginatedProducts.map((product) => (
-              <div key={product.id} className="border rounded-lg overflow-hidden">
-                <Image src={product.image} alt={product.name} height={100} width={100} className="w-full h-48 object-cover" />
+              <div key={product.id} className="border rounded-xl overflow-hidden bg-white px-2 pb-6">
+                <Image src={product.image} alt={product.name} height={100} width={100} className="w-full h-56 object-cover" />
                 <div className="p-4">
                   <h3 className="font-semibold">{product.name}</h3>
                   <p className="text-lg font-bold mt-2">${product.price}</p>
                   <div className="mt-2 flex flex-wrap gap-1">
                     {product.tags.map((tag, index) => (
-                      <span key={index} className="text-xs bg-gray-200 rounded-full px-2 py-1">{tag}</span>
+                      <span key={index} className="text-xs bg-gray-200 rounded-xlll px-2 py-1">{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export default function ClothingCatalog() {
               </Button>
             </div>
           </div>
-        </section>
+        </div>
       </main>
     </div>
   )
