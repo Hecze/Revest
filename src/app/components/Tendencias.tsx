@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface TendenciaProps {
   title: string;
@@ -7,7 +8,7 @@ interface TendenciaProps {
 
 const Tendencia: React.FC<TendenciaProps> = ({ title, imgSrc }) => {
   return (
-    <div className="relative w-full shadow-md cursor-pointer hover:opacity-90 transition aspect-w-1" style={{ paddingBottom: '200%' }}>
+    <Link className="relative w-full shadow-md cursor-pointer hover:opacity-90 transition aspect-w-1" style={{ paddingBottom: '200%' }} href={'/catalog'}>
       {/* Imagen de la tendencia justificada a la parte superior */}
       <Image
         src={imgSrc}
@@ -22,7 +23,7 @@ const Tendencia: React.FC<TendenciaProps> = ({ title, imgSrc }) => {
       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-90 p-2">
         <h3 className="text-white text-center text-md font">{title}</h3>
       </div>
-    </div>
+    </Link>
   );
 };
 

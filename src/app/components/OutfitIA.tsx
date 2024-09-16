@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Title Component
 const Title: React.FC = () => (
@@ -23,9 +24,9 @@ interface OutfitImageProps {
 }
 
 const OutfitImage: React.FC<OutfitImageProps> = ({ src, alt, className }) => (
-  <div className={`bg-gray-300 relative shadow-md cursor-pointer hover:opacity-90 transition  md:col-span-2 " ${className}`} style={{ paddingBottom: '100%' }}>
+  <Link className={`bg-gray-300 relative shadow-md cursor-pointer hover:opacity-90 transition  md:col-span-2 " ${className}`} style={{ paddingBottom: '100%' }} href={'/catalog'}>
     <Image src={src} alt={alt} layout="fill" objectFit="cover" className="rounded-md" />
-  </div>
+  </Link>
 );
 
 // Text Box Component

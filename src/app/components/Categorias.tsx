@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface CategoriaProps {
   title: string;
@@ -7,7 +8,7 @@ interface CategoriaProps {
 
 const Categoria: React.FC<CategoriaProps> = ({ title, imgSrc }) => {
   return (
-    <div className="relative h-36 w-full rounded-xl overflow-hidden shadow-md cursor-pointer hover:opacity-90 transition">
+    <Link className="relative h-36 w-full rounded-xl overflow-hidden shadow-md cursor-pointer hover:opacity-90 transition" href={'/catalog'}>
       {/* Imagen recortada para encajar en el contenedor */}
       <Image
         src={imgSrc}
@@ -21,7 +22,7 @@ const Categoria: React.FC<CategoriaProps> = ({ title, imgSrc }) => {
       <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-75 py-1 px-3 rounded-tl-xl rounded-br-xl w-36">
         <h3 className="text-black text-center text-md font-medium">{title}</h3>
       </div>
-    </div>
+    </Link>
   );
 };
 
