@@ -115,13 +115,7 @@ export default function ClothingCatalog() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className=" border-b sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
-          <Link className="text-sm  mb-4 sm:mb-0 optacity-90" href={"/"}></Link>
-
-        </div>
-      </header>
-
+      
       <main className="flex-grow container mx-auto my-4 sm:my-12  flex flex-col md:flex-row">
         <Sheet>
           <SheetTrigger asChild>
@@ -173,7 +167,7 @@ export default function ClothingCatalog() {
                 </SelectContent>
               </Select>
             </div>
-            <span className="flex md:mt-0 gap-2 md:gap-6 flex-wrap items-center opacity-90"><span className="mb-2 sm:mb-0 mx-auto">{sortedProducts.length} Productos Encontrados</span>
+            <span className="flex md:mt-0 gap-2 md:gap-6 flex-col flex-wrap items-center opacity-90 mr-4"><span className="mb-2 sm:mb-0 mx-auto">{sortedProducts.length} Productos Encontrados</span>
               <div className="flex space-x-2 items-center w-full justify-center ">
                 <Button
                   variant="outline"
