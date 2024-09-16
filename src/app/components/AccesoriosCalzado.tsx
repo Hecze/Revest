@@ -27,7 +27,7 @@ const ProductoGrande: React.FC<{ imgSrc: string; title: string; description: str
 // Componente para productos pequeños (ocupan 1 columna)
 const ProductoPequeno: React.FC<{ imgSrc: string; altText: string }> = ({ imgSrc, altText }) => {
   return (
-    <div className="col-span-1 bg-red-200">
+    <Link className="col-span-1 bg-red-200" href={"/zapatilla/asd5sad2"}>
       <Image
         src={imgSrc}
         alt={altText}
@@ -36,7 +36,7 @@ const ProductoPequeno: React.FC<{ imgSrc: string; altText: string }> = ({ imgSrc
         height={500}
         className="rounded-lg"
       />
-    </div>
+    </Link>
   );
 };
 

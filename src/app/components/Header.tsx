@@ -4,6 +4,7 @@ import { RiArrowGoBackFill, RiMoneyDollarCircleLine } from "react-icons/ri";
 import { IoTicketOutline, IoPersonOutline } from "react-icons/io5";
 import { PiPackage, PiLineVerticalThin } from "react-icons/pi";
 import { FiShoppingCart } from "react-icons/fi";
+import Link from 'next/link';
 
 // Componente reutilizable para características con íconos
 interface IconFeatureProps {
@@ -48,7 +49,7 @@ const BannerSection: React.FC = () => (
     <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
       <h1 className="text-4xl font-bold text-white">TENDENCIAS</h1>
       <p className="text-xl text-white">que no te puedes perder</p>
-      <button className="bg-black text-white px-6 py-2 mt-4 rounded-md">VER COLECCIÓN</button>
+      <Link className="bg-black text-white px-6 py-2 mt-4 rounded-md" href={"/catalog"}>VER COLECCIÓN</Link>
     </div>
   </div>
 );

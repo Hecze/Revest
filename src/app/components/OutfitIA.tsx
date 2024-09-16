@@ -24,7 +24,7 @@ interface OutfitImageProps {
 }
 
 const OutfitImage: React.FC<OutfitImageProps> = ({ src, alt, className }) => (
-  <Link className={`bg-gray-300 relative shadow-md cursor-pointer hover:opacity-90 transition  md:col-span-2 " ${className}`} style={{ paddingBottom: '100%' }} href={'/catalog'}>
+  <Link className={`bg-gray-300 relative shadow-md cursor-pointer hover:opacity-90 transition  md:col-span-2 " ${className}`} style={{ paddingBottom: '100%' }} href={'/Blusa/S5D2'}>
     <Image src={src} alt={alt} layout="fill" objectFit="cover" className="rounded-md" />
   </Link>
 );
@@ -36,9 +36,9 @@ interface TextBoxProps {
 }
 
 const TextBox: React.FC<TextBoxProps> = ({ text, className }) => (
-  <div className={` p-4 px-8  shadow-md cursor-pointer hover:opacity-90 transition w-full text-center ${className}`}>
+  <Link className={` p-4 px-8  shadow-md cursor-pointer hover:opacity-90 transition w-full text-center ${className}`} href={"/catalog"}>
     {text}
-  </div>
+  </Link>
 );
 
 // Grid Layout Component
