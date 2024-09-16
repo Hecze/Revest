@@ -98,7 +98,7 @@ export default function ClothingPage({ params }: Props) {
                             />
                         </div>
                     </div>
-                    <Button className="w-full">Comprar ahora</Button>
+                    <Button className="w-full">Alquilar ahora</Button>
                 </div>
             </div>
             <div className="flex flex-col md:flex-row gap-8">
