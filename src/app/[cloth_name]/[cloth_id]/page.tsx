@@ -4,6 +4,7 @@ import Image from 'next/image'
 // import { notFound } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import Link from 'next/link'
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 type Props = {
@@ -45,7 +46,7 @@ export default function ClothingPage({ params }: Props) {
     // }
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 lg:px-8  mt-4 md:my-8 py-6 rounded-lg bg-white">
             <div className="flex flex-col md:flex-row gap-8 mb-8">
                 <div className="md:w-1/2">
                     <Image
@@ -56,7 +57,7 @@ export default function ClothingPage({ params }: Props) {
                         className="w-full h-auto rounded-lg shadow-lg"
                     />
                 </div>
-                <div className="md:w-1/2 flex flex-col justify-between">
+                <div className="md:w-1/2 flex flex-col justify-between lg:justify-start lg:gap-4 pt-2">
                     <div>
                         <h1 className="text-3xl font-bold mb-2">{productData.name}</h1>
                         <p className="text-2xl font-semibold mb-4">
@@ -98,17 +99,17 @@ export default function ClothingPage({ params }: Props) {
                             />
                         </div>
                     </div>
-                    <Button className="w-full">Alquilar ahora</Button>
+                    <Link className="w-full p-4 rounded  bg-black text-white flex justify-center" href={"https://wa.me/51925641589?text=Hola,%20quiero%20alquilar%20una%20prenda"}>Alquilar ahora</Link>
                 </div>
             </div>
             <div className="flex flex-col md:flex-row gap-8">
                 <div className="md:w-1/2">
-                    <h2 className="text-2xl font-semibold mb-4">Especificaciones</h2>
+                    <h2 className="text-2xl font-semibold mb-5">Especificaciones</h2>
                     <dl className="grid grid-cols-1 gap-y-2">
                         {productData.specifications.map((spec, index) => (
-                            <div key={index} className="flex">
-                                <dt className="font-medium w-1/3">{spec.label}</dt>
-                                <dd className="w-2/3">{spec.value}</dd>
+                            <div key={index} className="flex shadow px-4 py-3 gap-24">
+                                <dt className="font-medium w-1/3">{spec.label}:</dt>
+                                <dd className="w-1/3">{spec.value}</dd>
                             </div>
                         ))}
                     </dl>
@@ -118,6 +119,6 @@ export default function ClothingPage({ params }: Props) {
                     <p className="whitespace-pre-line">{productData.additionalInfo}</p>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
