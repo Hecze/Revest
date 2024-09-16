@@ -1,8 +1,7 @@
 "use client"
-
+import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 import {
@@ -23,7 +22,6 @@ import {
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -199,7 +197,7 @@ export default function ClothingCatalog() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {paginatedProducts.map((product) => (
               <div key={product.id} className="border rounded-lg overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+                <Image src={product.image} alt={product.name} className="w-full h-48 object-cover" />
                 <div className="p-4">
                   <h3 className="font-semibold">{product.name}</h3>
                   <p className="text-lg font-bold mt-2">${product.price}</p>
