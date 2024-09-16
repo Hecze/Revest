@@ -57,30 +57,6 @@ const BannerSection: React.FC = () => (
 const Header: React.FC = () => {
   return (
     <header className="bg-white border-b border-gray-200">
-      {/* Top bar with logo and navigation */}
-      <div className="flex justify-between items-center lg:px-72 py-4">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <Link className="text-2xl font-bold mb-4 sm:mb-0" href={"/"}>Revest</Link>
-        </div>
-
-        {/* Search bar */}
-        <SearchBar />
-
-        {/* Icons for cart, user, and menu */}
-        <div className="items-center space-x-6 hidden lg:flex ">
-          <button className="flex items-center">
-            <IoPersonOutline size={24} />
-          </button>
-          <button className="flex items-center">
-            <FiShoppingCart size={24} />
-          </button>
-          <button className="bg-black text-white px-4 py-2 rounded-md">
-            Suscribirse
-          </button>
-        </div>
-      </div>
-
       {/* Main banner section */}
       <BannerSection />
 
