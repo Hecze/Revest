@@ -141,7 +141,7 @@ export default function ClothingCatalog() {
               <Filter className="mr-2 h-4 w-4" /> Filtros
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+          <SheetContent side="left" className="bg-white w-[300px] sm:w-[400px]">
             <SheetHeader>
               <SheetTitle>Filtros</SheetTitle>
             </SheetHeader>
@@ -197,7 +197,7 @@ export default function ClothingCatalog() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {paginatedProducts.map((product) => (
               <div key={product.id} className="border rounded-lg overflow-hidden">
-                <Image src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+                <Image src={product.image} alt={product.name} height={100} width={100} className="w-full h-48 object-cover" />
                 <div className="p-4">
                   <h3 className="font-semibold">{product.name}</h3>
                   <p className="text-lg font-bold mt-2">${product.price}</p>
