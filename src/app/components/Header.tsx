@@ -1,9 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { RiArrowGoBackFill, RiMoneyDollarCircleLine } from "react-icons/ri";
-import { IoTicketOutline, IoPersonOutline } from "react-icons/io5";
+import { IoTicketOutline } from "react-icons/io5";
 import { PiPackage, PiLineVerticalThin } from "react-icons/pi";
-import { FiShoppingCart } from "react-icons/fi";
 import Link from 'next/link';
 
 // Componente reutilizable para características con íconos
@@ -21,17 +20,6 @@ const IconFeature: React.FC<IconFeatureProps> = ({ Icon, title, subtitle }) => (
       <p className="text-sm">{title}</p>
       <p className="text-xs text-gray-500">{subtitle}</p>
     </div>
-  </div>
-);
-
-// Componente reutilizable para la barra de búsqueda
-const SearchBar: React.FC = () => (
-  <div className="flex-grow max-w-md mx-4">
-    <input
-      type="text"
-      placeholder="Buscar producto, categoría, marca..."
-      className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
   </div>
 );
 
