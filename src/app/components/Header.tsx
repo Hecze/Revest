@@ -61,12 +61,7 @@ const Header: React.FC = () => {
       <div className="flex justify-between items-center lg:px-72 py-4">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <Image
-            src="/logo.png"
-            alt="Revest Logo"
-            width={120}
-            height={40}
-          />
+          <Link className="text-2xl font-bold mb-4 sm:mb-0" href={"/"}>Revest</Link>
         </div>
 
         {/* Search bar */}
