@@ -4,7 +4,7 @@ import Image from 'next/image';
 // Componente para productos grandes (ocupan 3 columnas)
 const ProductoGrande: React.FC<{ imgSrc: string; title: string; description: string; bgColor: string }> = ({ imgSrc, title, description, bgColor }) => {
   return (
-    <div className={`col-span-2 sm:col-span-4 lg:col-span-3 ${bgColor} p-8 flex flex-row justify-center md:justify-between lg:px-24`}>
+    <div className={`col-span-2 sm:col-span-4 lg:col-span-3 rounded ${bgColor} p-8 flex flex-row justify-center md:justify-between lg:px-24`}>
       <Image
         src={imgSrc}
         alt={title}
@@ -27,14 +27,14 @@ const ProductoGrande: React.FC<{ imgSrc: string; title: string; description: str
 // Componente para productos pequeños (ocupan 1 columna)
 const ProductoPequeno: React.FC<{ imgSrc: string; altText: string }> = ({ imgSrc, altText }) => {
   return (
-    <Link className="col-span-1 bg-red-200" href={"/zapatilla/asd5sad2"}>
+    <Link className="" href={"/zapatilla/asd5sad2"}>
       <Image
         src={imgSrc}
         alt={altText}
-        layout="responsive"
+
         width={500}
         height={500}
-        className="rounded-lg"
+        className='w-full h-full rounded'
       />
     </Link>
   );
