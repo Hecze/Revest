@@ -1,10 +1,12 @@
+//components/OutfitIA.tsx
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 // Title Component
 const Title: React.FC = () => (
-  <h1 className="text-3xl font-bold mb-6">Crea tu outfit perfecto con REVALI IA</h1>
+  <h1 className="text-3xl font-bold mb-6">Crea tu outfit perfecto con Fiduccio IA</h1>
 );
 
 // Input Component
