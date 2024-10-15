@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "../globals.css";
 import Link from "next/link";
 import { IoPersonOutline } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Alquiler de Ropa | Fiduccio",
@@ -40,7 +29,6 @@ export default function RootLayout({
     <html lang="en">
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header>
           <div className="flex justify-between items-center lg:px-72 py-4 bg-white">
