@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "../globals.css";
 import Link from "next/link";
 import { IoPersonOutline } from "react-icons/io5";
