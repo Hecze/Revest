@@ -8,7 +8,7 @@ const ProductoGrande: React.FC<{ imgSrc: string; title: string; description: str
       <Image
         src={imgSrc}
         alt={title}
-        width={150}
+        width={220}
         height={150}
         className="mb-4 hidden md:block"
       />
@@ -48,25 +48,25 @@ const AccesoriosCalzado: React.FC = () => {
 
         {/* Primer div grande (Accesorios) */}
         <ProductoGrande
-          imgSrc="/mochila.png"
-          title="ACCESORIOS"
-          description="Desde casual hasta elegante, un accesorio para cada ocasión"
+          imgSrc="/gamepad.png"
+          title="VIDEOJUEGOS"
+          description="Desde consolas hasta computadoras"
           bgColor="bg-orange-100"
         />
 
         {/* Imágenes pequeñas (Productos individuales) */}
-        <ProductoPequeno imgSrc="/zapato1.png" altText="Zapato 1" />
-        <ProductoPequeno imgSrc="/zapato2.png" altText="Zapato 2" />
+        <ProductoPequeno imgSrc="/play5.webp" altText="Zapato 1" />
+        <ProductoPequeno imgSrc="/computadora.webp" altText="Zapato 2" />
 
         {/* Segunda fila de imágenes pequeñas */}
-        <ProductoPequeno imgSrc="/zapato3.png" altText="Zapato 3" />
-        <ProductoPequeno imgSrc="/zapato4.png" altText="Zapato 4" />
+        <ProductoPequeno imgSrc="/fulbito.webp" altText="Zapato 3" />
+        <ProductoPequeno imgSrc="/hockey.webp" altText="Zapato 4" />
 
         {/* Segundo div grande (Calzado) */}
         <ProductoGrande
-          imgSrc="/zapatillas.png"
-          title="CALZADO"
-          description="Desde casual hasta elegante, un accesorio para cada ocasión"
+          imgSrc="/dados.png"
+          title="MESAS"
+          description="Desde mesa de billar hasta mesa de Jockie"
           bgColor="bg-gray-800 text-white"
         />
       </div>

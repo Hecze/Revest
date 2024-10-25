@@ -33,9 +33,9 @@ const Tendencias: React.FC = () => {
     <section className="">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
         {/* Aquí llamamos al componente Tendencia con la imagen y el título */}
-        <Tendencia title="Muebles Geometricos" imgSrc="/mueble-geometrico.avif" />
+        <Tendencia title="Consolas" imgSrc="/gameroom.webp" />
         <Tendencia title="Sofas" imgSrc="/sofa.webp" />
-        <Tendencia title="Butacas" imgSrc="/butacas.avif" />
+        <Tendencia title="Dormitorio" imgSrc="/dormitorio.webp" />
         <Tendencia title="Infantil" imgSrc="/infantil.webp" />
       </div>
     </section>
