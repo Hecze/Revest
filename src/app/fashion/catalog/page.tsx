@@ -221,7 +221,7 @@ export default function ClothingCatalog() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {paginatedProducts.map((product) => (
-              <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition " href={"/nombre_prenda/prenda_id"}>
+              <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition " href={"/fashion/nombre_prenda/" + product.id}>
                 <>
                 <Image src={product.image} unoptimized alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
                 </>
