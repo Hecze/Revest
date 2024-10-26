@@ -73,8 +73,8 @@ const GridLayout: React.FC = () => (
     {/* Text Boxes */}
     <div className="col-span-2 md:col-span-4 flex flex-col justify-center items-center ">
       <div className="flex flex-col w-full justify-around items-center gap-2">
-        <TextBox text="Suscríbete desde 5 prendas por mes y úsalas cuando quieras" className='bg-slate-900 text-white' href='/membership' />
-        <TextBox text="Elige entre más de 10 mil prendas en catálogo y ayuda a nuestro planeta" className='bg-white text-slate-900' href='/catalog' />
+        <TextBox text="Suscríbete desde 5 prendas por mes y úsalas cuando quieras" className='bg-slate-900 text-white' href='/furniture/membership' />
+        <TextBox text="Elige entre más de 10 mil prendas en catálogo y ayuda a nuestro planeta" className='bg-white text-slate-900' href='/furniture/catalog' />
       </div>
     </div>
   </div>

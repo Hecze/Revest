@@ -19,7 +19,7 @@ const ProductoGrande: React.FC<{ imgSrc: string; title: string; description: str
       <div className='flex flex-col justify-center items-center md:items-start md:justify-center'>
         <h2 className="text-xl md:text-2xl font-bold">{title}</h2>
         <p className="mt-2 text-sm md:text-base">{description}</p>
-        <Link className="mt-4 bg-black text-white font-bold py-2 px-4 hover:bg-gray-700 w-full md:w-48 rounded text-center" href={'/catalog'} >
+        <Link className="mt-4 bg-black text-white font-bold py-2 px-4 hover:bg-gray-700 w-full md:w-48 rounded text-center" href={'/furniture/catalog'} >
           Ver colección
         </Link>
       </div>

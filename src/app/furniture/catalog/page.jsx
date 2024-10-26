@@ -52,23 +52,38 @@ export default function ClothingCatalog() {
   })
 
   useEffect(() => {
-    fetch("https://api.escuelajs.co/api/v1/products/?categoryId=3")
-      .then(response => response.json())
-      .then(async (data) => {
-        const filteredData = data.filter(
-          (product) => 
-            product.title !== "New Product" && 
+    const fetchProducts = async () => {
+      try {
+        const [furnitureResponse, electronicsResponse] = await Promise.all([
+          fetch("https://api.escuelajs.co/api/v1/products/?categoryId=3"),
+          fetch("https://api.escuelajs.co/api/v1/products/?categoryId=2"),
+        ])
+
+        const [furnitureData, electronicsData] = await Promise.all([
+          furnitureResponse.json(),
+          electronicsResponse.json(),
+        ])
+
+        // Filtrar productos no deseados de ambas categorías
+        const combinedData = [...furnitureData, ...electronicsData].filter(
+          (product) =>
+            product.title !== "New Product" &&
             product.title !== "testProduct"
         )
+
+        // Filtrar productos con imágenes válidas
         const productsWithValidImages = await Promise.all(
-          filteredData.map(async (item) => {
+          combinedData.map(async (item) => {
             const imageUrl = item.images[0]
+
+            // Verificar si la imagen es válida
             const isValidImage = await new Promise((resolve) => {
               const img = new window.Image()
               img.src = imageUrl
               img.onload = () => resolve(true)
               img.onerror = () => resolve(false)
             })
+
             return isValidImage
               ? {
                   id: item.id,
@@ -80,9 +95,15 @@ export default function ClothingCatalog() {
               : null
           })
         )
+
+        // Filtrar productos nulos y actualizar el estado
         setProducts(productsWithValidImages.filter(Boolean))
-      })
-      .catch((error) => console.error("Error al obtener los productos:", error))
+      } catch (error) {
+        console.error("Error al obtener los productos:", error)
+      }
+    }
+
+    fetchProducts()
   }, [])
 
   const filteredProducts = products.filter(product =>
