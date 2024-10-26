@@ -31,7 +31,7 @@ export default function RootLayout({
           <div className="flex justify-between items-center lg:px-72 py-4 bg-white">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <Link className="text-2xl font-bold mb-4 sm:mb-0 ml-4 translate-y-2" href={"/"}>
+              <Link className="text-2xl font-bold mb-4 sm:mb-0 ml-4 translate-y-2" href={"/furniture"}>
                 Fiduccio
               </Link>
             </div>
