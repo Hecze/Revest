@@ -28,13 +28,14 @@ import {
 } from "@/components/ui/sheet"
 import Link from "next/link"
 
-const categories = ["Camisetas", "Pantalones", "Vestidos", "Zapatos", "Accesorios"]
-const brands = ["Nike", "Adidas", "Zara", "H&M", "Levi's"]
-const materials = ["Algodón", "Poliéster", "Lana", "Cuero", "Denim"]
-const sizes = ["XS", "S", "M", "L", "XL"]
-const colors = ["Negro", "Blanco", "Rojo", "Azul", "Verde"]
-const genders = ["Hombre", "Mujer", "Unisex"]
-const seasons = ["Primavera", "Verano", "Otoño", "Invierno"]
+// Actualizar categorías, marcas, y otros filtros para el nuevo contexto
+const categories = ["Muebles", "Electrodomésticos", "Electrónica", "Iluminación", "Decoración"]
+const brands = ["Samsung", "LG", "Sony", "Philips", "Whirlpool", "IKEA", "Panasonic"]
+const materials = ["Madera", "Metal", "Plástico", "Vidrio", "Acero inoxidable"]
+const sizes = ["Pequeño", "Mediano", "Grande"]
+const colors = ["Negro", "Blanco", "Plata", "Azul", "Rojo"]
+const energyRatings = ["A++", "A+", "A", "B", "C"]
+const types = ["Hogar", "Oficina", "Exteriores", "Cocina", "Sala de estar"]
 
 type Product = {
   id: number;
@@ -44,10 +45,11 @@ type Product = {
   tags: string[];
 }
 
+// Generar productos de ejemplo para el nuevo contexto
 const generateProducts = (): Product[] => Array(100).fill(null).map((_, i) => ({
   id: i + 1,
   name: `Producto ${i + 1}`,
-  price: Math.floor(Math.random() * 1000) + 1,
+  price: Math.floor(Math.random() * 5000) + 500,
   image: `/placeholder.svg?height=200&width=200`,
   tags: [
     categories[Math.floor(Math.random() * categories.length)],
@@ -55,15 +57,15 @@ const generateProducts = (): Product[] => Array(100).fill(null).map((_, i) => ({
     materials[Math.floor(Math.random() * materials.length)],
     sizes[Math.floor(Math.random() * sizes.length)],
     colors[Math.floor(Math.random() * colors.length)],
-    genders[Math.floor(Math.random() * genders.length)],
-    seasons[Math.floor(Math.random() * seasons.length)],
+    energyRatings[Math.floor(Math.random() * energyRatings.length)],
+    types[Math.floor(Math.random() * types.length)],
   ]
 }))
 
-export default function ClothingCatalog() {
+export default function ProductCatalog() {
   const [currentPage, setCurrentPage] = useState(1)
   const [sortBy, setSortBy] = useState("recommended")
-  const [priceRange, setPriceRange] = useState([0, 1000])
+  const [priceRange, setPriceRange] = useState([500, 5000])
   const [products, setProducts] = useState<Product[]>([])
   const [filters, setFilters] = useState<{ [key: string]: string[] }>({
     categories: [],
@@ -71,8 +73,8 @@ export default function ClothingCatalog() {
     materials: [],
     sizes: [],
     colors: [],
-    genders: [],
-    seasons: []
+    energyRatings: [],
+    types: []
   })
 
   useEffect(() => {
@@ -85,15 +87,15 @@ export default function ClothingCatalog() {
     (filters.materials.length === 0 || filters.materials.some(material => product.tags.includes(material))) &&
     (filters.sizes.length === 0 || filters.sizes.some(size => product.tags.includes(size))) &&
     (filters.colors.length === 0 || filters.colors.some(color => product.tags.includes(color))) &&
-    (filters.genders.length === 0 || filters.genders.some(gender => product.tags.includes(gender))) &&
-    (filters.seasons.length === 0 || filters.seasons.some(season => product.tags.includes(season))) &&
+    (filters.energyRatings.length === 0 || filters.energyRatings.some(rating => product.tags.includes(rating))) &&
+    (filters.types.length === 0 || filters.types.some(type => product.tags.includes(type))) &&
     product.price >= priceRange[0] && product.price <= priceRange[1]
   )
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortBy === "price_asc") return a.price - b.price
     if (sortBy === "price_desc") return b.price - a.price
-    return 0 // For "recommended", we'll just use the original order
+    return 0 // Para "recommended", se usa el orden original
   })
 
   const productsPerPage = 20
@@ -110,20 +112,19 @@ export default function ClothingCatalog() {
         ? prev[category].filter(item => item !== value)
         : [...prev[category], value]
     }))
-    setCurrentPage(1) // Reset to first page when filters change
+    setCurrentPage(1) // Reiniciar a la primera página cuando cambian los filtros
   }
 
   return (
     <div className="flex flex-col min-h-screen">
-      
-      <main className="flex-grow container mx-auto my-4 sm:my-12  flex flex-col md:flex-row">
+      <main className="flex-grow container mx-auto my-4 sm:my-12 flex flex-col md:flex-row">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" className="mx-4  bg-white  mb-4 md:hidden">
+            <Button variant="outline" className="mx-4 bg-white mb-4 md:hidden">
               <Filter className="mr-2 h-4 w-4" /> Filtros
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="bg-white w-[300px]  sm:w-[400px] shadow">
+          <SheetContent side="left" className="bg-white w-[300px] sm:w-[400px] shadow">
             <SheetHeader>
               <SheetTitle>Filtros</SheetTitle>
             </SheetHeader>
@@ -152,8 +153,8 @@ export default function ClothingCatalog() {
           />
         </aside>
 
-        <div className="flex-grow px-4 ">
-          <div className=" mb-4 flex flex-col sm:flex-row justify-between items-center bg-white shadow rounded-xl py-6 gap-6 px-12">
+        <div className="flex-grow px-4">
+          <div className="mb-4 flex flex-col sm:flex-row justify-between items-center bg-white shadow rounded-xl py-6 gap-6 px-12">
             <div className="flex flex-wrap items-center space-x-4">
               <span className="hidden md:inline ml-4">Ordenar por:</span>
               <Select value={sortBy} onValueChange={setSortBy}>
@@ -167,8 +168,9 @@ export default function ClothingCatalog() {
                 </SelectContent>
               </Select>
             </div>
-            <span className="flex md:mt-0 gap-2 md:gap-6 flex-col flex-wrap items-center opacity-90 mr-4"><span className="mb-2 sm:mb-0 mx-auto">{sortedProducts.length} Productos Encontrados</span>
-              <div className="flex space-x-2 items-center w-full justify-center ">
+            <span className="flex md:mt-0 gap-2 md:gap-6 flex-col flex-wrap items-center opacity-90 mr-4">
+              <span className="mb-2 sm:mb-0 mx-auto">{sortedProducts.length} Productos Encontrados</span>
+              <div className="flex space-x-2 items-center w-full justify-center">
                 <Button
                   variant="outline"
                   size="sm"
@@ -186,15 +188,15 @@ export default function ClothingCatalog() {
                 >
                   <ChevronRight className="h-4 w-4" />
                 </Button>
-              </div></span>
-
+              </div>
+            </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {paginatedProducts.map((product) => (
-              <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition " href={"/nombre_prenda/prenda_id"}>
+              <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition" href={"/producto/electrodomestico"}>
                 <>
-                <Image src={"/IA-2.png"} alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
+                  <Image src={"/IA-2.png"} alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
                 </>
                 <div className="p-4">
                   <h3 className="font-semibold">{product.name}</h3>
@@ -300,9 +302,9 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
         <AccordionTrigger>Precio</AccordionTrigger>
         <AccordionContent>
           <Slider
-            min={0}
-            max={1000}
-            step={10}
+            min={500}
+            max={5000}
+            step={100}
             value={priceRange}
             onValueChange={setPriceRange}
             className="mb-2"
@@ -331,7 +333,7 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
       </AccordionItem>
 
       <AccordionItem value="sizes">
-        <AccordionTrigger>Talla</AccordionTrigger>
+        <AccordionTrigger>Tamaño</AccordionTrigger>
         <AccordionContent>
           {sizes.map((size) => (
             <div key={size} className="flex items-center mb-2">
@@ -362,33 +364,33 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
         </AccordionContent>
       </AccordionItem>
 
-      <AccordionItem value="genders">
-        <AccordionTrigger>Género</AccordionTrigger>
+      <AccordionItem value="energyRatings">
+        <AccordionTrigger>Clasificación Energética</AccordionTrigger>
         <AccordionContent>
-          {genders.map((gender) => (
-            <div key={gender} className="flex items-center mb-2">
+          {energyRatings.map((rating) => (
+            <div key={rating} className="flex items-center mb-2">
               <Checkbox
-                id={`gender-${gender}`}
-                checked={filters.genders.includes(gender)}
-                onCheckedChange={() => handleFilterChange('genders', gender)}
+                id={`energyRating-${rating}`}
+                checked={filters.energyRatings.includes(rating)}
+                onCheckedChange={() => handleFilterChange('energyRatings', rating)}
               />
-              <Label htmlFor={`gender-${gender}`} className="ml-2">{gender}</Label>
+              <Label htmlFor={`energyRating-${rating}`} className="ml-2">{rating}</Label>
             </div>
           ))}
         </AccordionContent>
       </AccordionItem>
 
-      <AccordionItem value="seasons">
-        <AccordionTrigger>Temporada</AccordionTrigger>
+      <AccordionItem value="types">
+        <AccordionTrigger>Tipo</AccordionTrigger>
         <AccordionContent>
-          {seasons.map((season) => (
-            <div key={season} className="flex items-center mb-2">
+          {types.map((type) => (
+            <div key={type} className="flex items-center mb-2">
               <Checkbox
-                id={`season-${season}`}
-                checked={filters.seasons.includes(season)}
-                onCheckedChange={() => handleFilterChange('seasons', season)}
+                id={`type-${type}`}
+                checked={filters.types.includes(type)}
+                onCheckedChange={() => handleFilterChange('types', type)}
               />
-              <Label htmlFor={`season-${season}`} className="ml-2">{season}</Label>
+              <Label htmlFor={`type-${type}`} className="ml-2">{type}</Label>
             </div>
           ))}
         </AccordionContent>
