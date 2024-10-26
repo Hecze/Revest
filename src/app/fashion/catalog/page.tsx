@@ -67,7 +67,7 @@ export default function ClothingCatalog() {
     // Llamada a la API para obtener los productos
     fetch("https://api.escuelajs.co/api/v1/products/?categoryId=1")
       .then(response => response.json())
-      .then(async (data) => {
+      .then(async (data: any) => {
         // Filtrar productos no deseados y probar carga de imágenes
         const filteredData = data.filter(
           (product: any) => 

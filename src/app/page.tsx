@@ -11,18 +11,6 @@ import { FiShoppingCart } from "react-icons/fi";
 import localFont from "next/font/local";
 import "./globals.css";
 
-// Configuración de fuentes locales
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 // Componente SearchBar
 const SearchBar: React.FC = () => (
   <div className="flex-grow max-w-md mx-4">
