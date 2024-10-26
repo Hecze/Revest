@@ -8,7 +8,6 @@ import DescubreMas from './components/DescubreMas'
 import Link from "next/link";
 import { IoPersonOutline } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
-import localFont from "next/font/local";
 import "./globals.css";
 
 // Componente SearchBar
