@@ -35,7 +35,7 @@ const Categorias: React.FC = () => {
         <Categoria title="Hombres" imgSrc="/hombres.png" />
         <Categoria title="Mujeres" imgSrc="/mujeres.png" />
         <Categoria title="Bebes" imgSrc="/bebes.png" />
-        <Categoria title="Niños" imgSrc="/niños.png" />
+        <Categoria title="Niño" imgSrc="/niños.png" />
       </div>
     </section>
   );
