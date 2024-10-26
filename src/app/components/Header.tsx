@@ -37,7 +37,7 @@ const BannerSection: React.FC = () => (
     <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
       <h1 className="text-4xl font-bold text-white">TENDENCIAS</h1>
       <p className="text-xl text-white">que no te puedes perder</p>
-      <Link className="bg-black text-white px-6 py-2 mt-4 rounded-md" href={"/catalog"}>VER COLECCIÓN</Link>
+      <Link className="bg-black text-white px-6 py-2 mt-4 rounded-md" href={"/fashion/catalog"}>VER COLECCIÓN</Link>
     </div>
   </div>
 );

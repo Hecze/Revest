@@ -26,7 +26,7 @@ interface OutfitImageProps {
 }
 
 const OutfitImage: React.FC<OutfitImageProps> = ({ src, alt, className }) => (
-  <Link className={`bg-gray-300 relative shadow-md cursor-pointer hover:opacity-90 transition  md:col-span-2 " ${className}`} style={{ paddingBottom: '100%' }} href={'/Blusa/S5D2'}>
+  <Link className={`bg-gray-300 relative shadow-md cursor-pointer hover:opacity-90 transition  md:col-span-2 " ${className}`} style={{ paddingBottom: '100%' }} href={'/fashion/Blusa/17'}>
     <Image src={src} alt={alt} layout="fill" objectFit="cover" className="rounded-md" />
   </Link>
 );
@@ -73,8 +73,8 @@ const GridLayout: React.FC = () => (
     {/* Text Boxes */}
     <div className="col-span-2 md:col-span-4 flex flex-col justify-center items-center ">
       <div className="flex flex-col w-full justify-around items-center gap-2">
-        <TextBox text="Suscríbete desde 5 prendas por mes y úsalas cuando quieras" className='bg-slate-900 text-white' href='/membership' />
-        <TextBox text="Elige entre más de 10 mil prendas en catálogo y ayuda a nuestro planeta" className='bg-white text-slate-900' href='/catalog' />
+        <TextBox text="Suscríbete desde 5 prendas por mes y úsalas cuando quieras" className='bg-slate-900 text-white' href='/fashion/membership' />
+        <TextBox text="Elige entre más de 10 mil prendas en catálogo y ayuda a nuestro planeta" className='bg-white text-slate-900' href='/fashion/catalog' />
       </div>
     </div>
   </div>

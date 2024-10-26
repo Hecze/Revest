@@ -15,7 +15,7 @@ const ProductoGrande: React.FC<{ imgSrc: string; title: string; description: str
       <div className='flex flex-col justify-center items-center text-center'>
         <h2 className="text-2xl font-bold">{title}</h2>
         <p className="mt-2">{description}</p>
-        <Link className="mt-6 bg-black text-white py-2 px-4 hover:bg-gray-700 w-64" href={'/catalog'} >
+        <Link className="mt-6 bg-black text-white py-2 px-4 hover:bg-gray-700 w-64" href={'/fashion/catalog'} >
           Ver colección
         </Link>
       </div>
@@ -27,7 +27,7 @@ const ProductoGrande: React.FC<{ imgSrc: string; title: string; description: str
 // Componente para productos pequeños (ocupan 1 columna)
 const ProductoPequeno: React.FC<{ imgSrc: string; altText: string }> = ({ imgSrc, altText }) => {
   return (
-    <Link className="" href={"/zapatilla/asd5sad2"}>
+    <Link className="" href={"/fashion/zapatilla/42"}>
       <Image
         src={imgSrc}
         alt={altText}

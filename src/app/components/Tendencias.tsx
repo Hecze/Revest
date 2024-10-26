@@ -8,7 +8,7 @@ interface TendenciaProps {
 
 const Tendencia: React.FC<TendenciaProps> = ({ title, imgSrc }) => {
   return (
-    <Link className="relative w-full shadow-md cursor-pointer hover:opacity-90 transition aspect-w-1" style={{ paddingBottom: '200%' }} href={'/catalog'}>
+    <Link className="relative w-full shadow-md cursor-pointer hover:opacity-90 transition aspect-w-1" style={{ paddingBottom: '200%' }} href={'/fashion/catalog'}>
       {/* Imagen de la tendencia justificada a la parte superior */}
       <Image
         src={imgSrc}

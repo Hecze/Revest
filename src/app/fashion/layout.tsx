@@ -47,7 +47,7 @@ export default function RootLayout({
               <button className="flex items-center">
                 <FiShoppingCart size={24} />
               </button>
-              <Link className="bg-black text-white px-4 py-2 rounded-md" href={"/membership"}>
+              <Link className="bg-black text-white px-4 py-2 rounded-md" href={"/fashion/membership"}>
                 Suscribirse
               </Link>
             </div>

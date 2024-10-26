@@ -8,7 +8,7 @@ interface CategoriaProps {
 
 const Categoria: React.FC<CategoriaProps> = ({ title, imgSrc }) => {
   return (
-    <Link className="relative h-36 w-full rounded-xl overflow-hidden shadow-md cursor-pointer hover:opacity-90 transition" href={'/catalog'}>
+    <Link className="relative h-36 w-full rounded-xl overflow-hidden shadow-md cursor-pointer hover:opacity-90 transition" href={'/fashion/catalog'}>
       {/* Imagen recortada para encajar en el contenedor */}
       <Image
         src={imgSrc}
