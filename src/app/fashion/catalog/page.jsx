@@ -36,23 +36,12 @@ const colors = ["Negro", "Blanco", "Rojo", "Azul", "Verde"]
 const genders = ["Hombre", "Mujer", "Unisex"]
 const seasons = ["Primavera", "Verano", "Otoño", "Invierno"]
 
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  tags: string[];
-}
-
-
-
-
 export default function ClothingCatalog() {
   const [currentPage, setCurrentPage] = useState(1)
   const [sortBy, setSortBy] = useState("recommended")
   const [priceRange, setPriceRange] = useState([0, 1000])
-  const [products, setProducts] = useState<Product[]>([])
-  const [filters, setFilters] = useState<{ [key: string]: string[] }>({
+  const [products, setProducts] = useState([])
+  const [filters, setFilters] = useState({
     categories: [],
     brands: [],
     materials: [],
@@ -62,32 +51,24 @@ export default function ClothingCatalog() {
     seasons: []
   })
 
-
   useEffect(() => {
-    // Llamada a la API para obtener los productos
     fetch("https://api.escuelajs.co/api/v1/products/?categoryId=1")
       .then(response => response.json())
-      .then(async (data: any) => {
-        // Filtrar productos no deseados y probar carga de imágenes
+      .then(async (data) => {
         const filteredData = data.filter(
-          (product: any) => 
+          (product) => 
             product.title !== "New Product" && 
             product.title !== "testProduct"
-        );
-  
-        // Filtrar productos con imágenes válidas
+        )
         const productsWithValidImages = await Promise.all(
-          filteredData.map(async (item: any) => {
-            const imageUrl = item.images[0];
-            
-            // Verificar si la imagen es válida
+          filteredData.map(async (item) => {
+            const imageUrl = item.images[0]
             const isValidImage = await new Promise((resolve) => {
-              const img = new window.Image();
-              img.src = imageUrl;
-              img.onload = () => resolve(true);
-              img.onerror = () => resolve(false);
-            });
-  
+              const img = new window.Image()
+              img.src = imageUrl
+              img.onload = () => resolve(true)
+              img.onerror = () => resolve(false)
+            })
             return isValidImage
               ? {
                   id: item.id,
@@ -96,17 +77,13 @@ export default function ClothingCatalog() {
                   image: imageUrl,
                   tags: [item.category.name],
                 }
-              : null;
+              : null
           })
-        );
-  
-        // Filtrar productos nulos y actualizar el estado
-        setProducts(productsWithValidImages.filter(Boolean));
+        )
+        setProducts(productsWithValidImages.filter(Boolean))
       })
-      .catch((error) => console.error("Error al obtener los productos:", error));
-  }, []);
-  
-  
+      .catch((error) => console.error("Error al obtener los productos:", error))
+  }, [])
 
   const filteredProducts = products.filter(product =>
     (filters.categories.length === 0 || filters.categories.some(cat => product.tags.includes(cat))) &&
@@ -122,7 +99,7 @@ export default function ClothingCatalog() {
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortBy === "price_asc") return a.price - b.price
     if (sortBy === "price_desc") return b.price - a.price
-    return 0 // For "recommended", we'll just use the original order
+    return 0
   })
 
   const productsPerPage = 20
@@ -132,27 +109,26 @@ export default function ClothingCatalog() {
     currentPage * productsPerPage
   )
 
-  const handleFilterChange = (category: string, value: string) => {
+  const handleFilterChange = (category, value) => {
     setFilters(prev => ({
       ...prev,
       [category]: prev[category].includes(value)
         ? prev[category].filter(item => item !== value)
         : [...prev[category], value]
     }))
-    setCurrentPage(1) // Reset to first page when filters change
+    setCurrentPage(1)
   }
 
   return (
     <div className="flex flex-col min-h-screen">
-      
-      <main className="flex-grow container mx-auto my-4 sm:my-12  flex flex-col md:flex-row">
+      <main className="flex-grow container mx-auto my-4 sm:my-12 flex flex-col md:flex-row">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" className="mx-4  bg-white  mb-4 md:hidden">
+            <Button variant="outline" className="mx-4 bg-white mb-4 md:hidden">
               <Filter className="mr-2 h-4 w-4" /> Filtros
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="bg-white w-[300px]  sm:w-[400px] shadow">
+          <SheetContent side="left" className="bg-white w-[300px] sm:w-[400px] shadow">
             <SheetHeader>
               <SheetTitle>Filtros</SheetTitle>
             </SheetHeader>
@@ -181,8 +157,8 @@ export default function ClothingCatalog() {
           />
         </aside>
 
-        <div className="flex-grow px-4 ">
-          <div className=" mb-4 flex flex-col sm:flex-row justify-between items-center bg-white shadow rounded-xl py-6 gap-6 px-12">
+        <div className="flex-grow px-4">
+          <div className="mb-4 flex flex-col sm:flex-row justify-between items-center bg-white shadow rounded-xl py-6 gap-6 px-12">
             <div className="flex flex-wrap items-center space-x-4">
               <span className="hidden md:inline ml-4">Ordenar por:</span>
               <Select value={sortBy} onValueChange={setSortBy}>
@@ -196,8 +172,9 @@ export default function ClothingCatalog() {
                 </SelectContent>
               </Select>
             </div>
-            <span className="flex md:mt-0 gap-2 md:gap-6 flex-col flex-wrap items-center opacity-90 mr-4"><span className="mb-2 sm:mb-0 mx-auto">{sortedProducts.length} Productos Encontrados</span>
-              <div className="flex space-x-2 items-center w-full justify-center ">
+            <span className="flex md:mt-0 gap-2 md:gap-6 flex-col flex-wrap items-center opacity-90 mr-4">
+              <span className="mb-2 sm:mb-0 mx-auto">{sortedProducts.length} Productos Encontrados</span>
+              <div className="flex space-x-2 items-center w-full justify-center">
                 <Button
                   variant="outline"
                   size="sm"
@@ -215,15 +192,15 @@ export default function ClothingCatalog() {
                 >
                   <ChevronRight className="h-4 w-4" />
                 </Button>
-              </div></span>
-
+              </div>
+            </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {paginatedProducts.map((product) => (
-              <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition " href={"/fashion/nombre_prenda/" + product.id}>
+              <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition" href={"/fashion/nombre_prenda/" + product.id}>
                 <>
-                <Image src={product.image} unoptimized alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
+                  <Image src={product.image} unoptimized alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
                 </>
                 <div className="p-4">
                   <h3 className="font-semibold">{product.name}</h3>
@@ -265,16 +242,7 @@ export default function ClothingCatalog() {
   )
 }
 
-type FiltersProps = {
-  filters: { [key: string]: string[] };
-  handleFilterChange: (category: string, value: string) => void;
-  priceRange: number[];
-  setPriceRange: (range: number[]) => void;
-  sortBy: string;
-  setSortBy: (value: string) => void;
-};
-
-function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortBy, setSortBy }: FiltersProps) {
+function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortBy, setSortBy }) {
   return (
     <Accordion type="multiple" className="w-full">
       <AccordionItem value="sort">
