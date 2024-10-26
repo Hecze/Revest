@@ -26,14 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-
-      <body
-      >
+      <body>
         <header>
           <div className="flex justify-between items-center lg:px-72 py-4 bg-white">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <Link className="text-2xl font-bold mb-4 sm:mb-0 ml-4 translate-y-2" href={"/"}>Fiduccio</Link>
+              <Link className="text-2xl font-bold mb-4 sm:mb-0 ml-4 translate-y-2" href={"/"}>
+                Fiduccio
+              </Link>
             </div>
 
             {/* Search bar */}
@@ -47,7 +47,7 @@ export default function RootLayout({
               <button className="flex items-center">
                 <FiShoppingCart size={24} />
               </button>
-              <Link className="bg-black text-white px-4 py-2 rounded-md" href={"/membership"}>
+              <Link className="bg-black text-white px-4 py-2 rounded-md" href={"/furniture/membership"}>
                 Suscribirse
               </Link>
             </div>

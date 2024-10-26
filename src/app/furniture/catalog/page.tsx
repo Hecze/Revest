@@ -194,6 +194,7 @@ export default function ProductCatalog() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {paginatedProducts.map((product) => (
+              <>
               <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition" href={"/producto/electrodomestico"}>
                 <>
                   <Image src={"/IA-2.png"} alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
@@ -208,6 +209,7 @@ export default function ProductCatalog() {
                   </div>
                 </div>
               </Link>
+              </>
             ))}
           </div>
 
