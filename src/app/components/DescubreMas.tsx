@@ -31,7 +31,7 @@ const DiscoverItem: React.FC<DiscoverItemProps> = ({ src, alt, text }) => (
 const DescubreMas = () => {
   return (
     <section className="py-6">
-      <h2 className="text-2xl font-bold text-center mb-6">Descubre más de FIDUCCIO</h2>
+      <h2 className="text-2xl font-bold text-center mb-6">Descubre más de Fiduccio</h2>
       <div className="flex flex-wrap gap-2 md:px-24 justify-center items-stretch">
         <DiscoverItem
           src="/descubre1.webp"

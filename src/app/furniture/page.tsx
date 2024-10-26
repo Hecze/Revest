@@ -9,8 +9,8 @@ export default function Home() {
     <>
       <Header />
       <Tendencias />
-      <Categorias />
       <AccesoriosCalzado />
+      <Categorias />
       <DescubreMas />
     </>
   )

@@ -26,6 +26,7 @@ const IconFeature: React.FC<IconFeatureProps> = ({ Icon, title, subtitle }) => (
 // Componente para la sección del banner
 const BannerSection: React.FC = () => (
   <div className="relative w-full flex flex-col h-64 bg-[#EF9A9C] overflow-hidden">
+    <>
     <Image
       src="/mueble-inicio.webp"
       alt="Tendencias que no te puedes perder"
@@ -33,6 +34,7 @@ const BannerSection: React.FC = () => (
       objectFit="cover"
       className="rounded-md lg:ml-[8 rem]"
     />
+    </>
     <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
       <h1 className="text-4xl font-bold text-white">TENDENCIAS</h1>
       <p className="text-xl text-white">que no te puedes perder</p>

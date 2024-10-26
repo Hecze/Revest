@@ -27,7 +27,7 @@ interface OutfitImageProps {
 
 const OutfitImage: React.FC<OutfitImageProps> = ({ src, alt, className }) => (
   <Link className={`bg-gray-300 relative shadow-md cursor-pointer hover:opacity-90 transition  md:col-span-2 " ${className}`} style={{ paddingBottom: '100%' }} href={'/Blusa/S5D2'}>
-    <Image src={src} alt={alt} layout="fill" objectFit="cover" className="rounded-md" />
+    <><Image src={src} alt={alt} layout="fill" objectFit="cover" className="rounded-md" /></>
   </Link>
 );
 
