@@ -44,21 +44,8 @@ type Product = {
   tags: string[];
 }
 
-const generateProducts = (): Product[] => Array(100).fill(null).map((_, i) => ({
-  id: i + 1,
-  name: `Producto ${i + 1}`,
-  price: Math.floor(Math.random() * 1000) + 1,
-  image: `/placeholder.svg?height=200&width=200`,
-  tags: [
-    categories[Math.floor(Math.random() * categories.length)],
-    brands[Math.floor(Math.random() * brands.length)],
-    materials[Math.floor(Math.random() * materials.length)],
-    sizes[Math.floor(Math.random() * sizes.length)],
-    colors[Math.floor(Math.random() * colors.length)],
-    genders[Math.floor(Math.random() * genders.length)],
-    seasons[Math.floor(Math.random() * seasons.length)],
-  ]
-}))
+
+
 
 export default function ClothingCatalog() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -75,9 +62,51 @@ export default function ClothingCatalog() {
     seasons: []
   })
 
+
   useEffect(() => {
-    setProducts(generateProducts())
-  }, [])
+    // Llamada a la API para obtener los productos
+    fetch("https://api.escuelajs.co/api/v1/products/?categoryId=1")
+      .then(response => response.json())
+      .then(async (data) => {
+        // Filtrar productos no deseados y probar carga de imágenes
+        const filteredData = data.filter(
+          (product: any) => 
+            product.title !== "New Product" && 
+            product.title !== "testProduct"
+        );
+  
+        // Filtrar productos con imágenes válidas
+        const productsWithValidImages = await Promise.all(
+          filteredData.map(async (item: any) => {
+            const imageUrl = item.images[0];
+            
+            // Verificar si la imagen es válida
+            const isValidImage = await new Promise((resolve) => {
+              const img = new window.Image();
+              img.src = imageUrl;
+              img.onload = () => resolve(true);
+              img.onerror = () => resolve(false);
+            });
+  
+            return isValidImage
+              ? {
+                  id: item.id,
+                  name: item.title,
+                  price: item.price,
+                  image: imageUrl,
+                  tags: [item.category.name],
+                }
+              : null;
+          })
+        );
+  
+        // Filtrar productos nulos y actualizar el estado
+        setProducts(productsWithValidImages.filter(Boolean));
+      })
+      .catch((error) => console.error("Error al obtener los productos:", error));
+  }, []);
+  
+  
 
   const filteredProducts = products.filter(product =>
     (filters.categories.length === 0 || filters.categories.some(cat => product.tags.includes(cat))) &&
@@ -194,7 +223,7 @@ export default function ClothingCatalog() {
             {paginatedProducts.map((product) => (
               <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition " href={"/nombre_prenda/prenda_id"}>
                 <>
-                <Image src={"/IA-2.png"} alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
+                <Image src={product.image} unoptimized alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
                 </>
                 <div className="p-4">
                   <h3 className="font-semibold">{product.name}</h3>
