@@ -1,17 +1,16 @@
-'use client'
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { Input } from "@/components/ui/input"
-import Link from "next/link"
+import Image from 'next/image';
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 type Props = {
     params: {
         furniture_id: string;
+        furniture_name: string;
     }
 }
 
 type ProductData = {
-    id: number;
+    product_id: string;
     title: string;
     price: number;
     description: string;
@@ -21,36 +20,51 @@ type ProductData = {
     images: string[];
 };
 
-export default function FurniturePage({ params }: Props) {
-    const [productData, setProductData] = useState<ProductData | null>(null);
+export default async function FurniturePage({ params }: Props) {
+    let productData: ProductData | null = null;
 
-    useEffect(() => {
-        async function fetchProduct() {
-            try {
-                const response = await fetch(`https://api.escuelajs.co/api/v1/products/${params.furniture_id}`);
-                if (!response.ok) throw new Error("Failed to fetch product data");
-                const data = await response.json();
-                setProductData(data);
-            } catch (error) {
-                console.error("Error fetching product data:", error);
-            }
+    try {
+        const response = await fetch(
+            `https://serpapi.com/search.json?engine=home_depot&q=${params.furniture_name}&delivery_zip=04401&api_key=d758e123c56eb8b2ba811d6e62f53b95818dae380c050ffc14d83b8a915dbf4d`
+        );
+
+        if (!response.ok) throw new Error("Failed to fetch product data");
+
+        const data = await response.json();
+        
+        // Filtrar para obtener el producto con el ID correcto
+        const product = data.products.find((item: any) => item.product_id === params.furniture_id);
+
+        if (product) {
+            productData = {
+                product_id: product.product_id,
+                title: product.title,
+                price: product.price,
+                description: product.description || "Descripción no disponible",
+                category: {
+                    name: product.category || "Categoría no disponible",
+                },
+                images: product.thumbnails[0] || [],
+            };
+        } else {
+            console.error("Producto no encontrado");
         }
+    } catch (error) {
+        console.error("Error fetching product data:", error);
+        return <div>Error al obtener los detalles del producto.</div>;
+    }
 
-        fetchProduct();
-    }, [params.furniture_id]);
-
-    if (!productData) return <div>Loading...</div>;
+    if (!productData) return <div>Cargando...</div>;
 
     return (
         <div className="container mx-auto px-4 lg:px-8 mt-4 md:my-8 py-6 rounded-lg bg-white">
             <div className="flex flex-col md:flex-row gap-8 mb-8">
                 <div className="md:w-1/2">
                     <Image
-                        src={productData.images[0]}
+                        src={productData.images[6]}
                         alt={productData.title}
                         width={600}
                         height={600}
-                        unoptimized
                         className="w-full h-auto rounded-lg shadow-lg"
                     />
                 </div>
@@ -92,5 +106,5 @@ export default function FurniturePage({ params }: Props) {
                 </div>
             </div>
         </div>
-    )
-} 
+    );
+}

@@ -200,7 +200,7 @@ export default function ClothingCatalog() {
             {paginatedProducts.map((product) => (
               <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition" href={"/fashion/nombre_prenda/" + product.id}>
                 <>
-                  <Image src={product.image} unoptimized alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
+                  <Image src={product.image} alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
                 </>
                 <div className="p-4">
                   <h3 className="font-semibold">{product.name}</h3>

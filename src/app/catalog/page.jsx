@@ -1,46 +1,46 @@
-"use client"
-import Image from "next/image"
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Slider } from "@/components/ui/slider"
+"use client";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import { ChevronLeft, ChevronRight, Filter } from "lucide-react"
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
-import Link from "next/link"
+} from "@/components/ui/sheet";
+import Link from "next/link";
 
-const categories = ["Camisetas", "Pantalones", "Vestidos", "Zapatos", "Accesorios"]
-const brands = ["Nike", "Adidas", "Zara", "H&M", "Levi's"]
-const materials = ["Algodón", "Poliéster", "Lana", "Cuero", "Denim"]
-const sizes = ["XS", "S", "M", "L", "XL"]
-const colors = ["Negro", "Blanco", "Rojo", "Azul", "Verde"]
-const genders = ["Hombre", "Mujer", "Unisex"]
-const seasons = ["Primavera", "Verano", "Otoño", "Invierno"]
+const categories = ["Camisetas", "Pantalones", "Vestidos", "Zapatos", "Accesorios"];
+const brands = ["Nike", "Adidas", "Zara", "H&M", "Levi's"];
+const materials = ["Algodón", "Poliéster", "Lana", "Cuero", "Denim"];
+const sizes = ["XS", "S", "M", "L", "XL"];
+const colors = ["Negro", "Blanco", "Rojo", "Azul", "Verde"];
+const genders = ["Hombre", "Mujer", "Unisex"];
+const seasons = ["Primavera", "Verano", "Otoño", "Invierno"];
 
 export default function ClothingCatalog() {
-  const [currentPage, setCurrentPage] = useState(1)
-  const [sortBy, setSortBy] = useState("recommended")
-  const [priceRange, setPriceRange] = useState([0, 1000])
-  const [products, setProducts] = useState([])
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sortBy, setSortBy] = useState("recommended");
+  const [priceRange, setPriceRange] = useState([0, 1000]);
+  const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({
     categories: [],
     brands: [],
@@ -48,97 +48,72 @@ export default function ClothingCatalog() {
     sizes: [],
     colors: [],
     genders: [],
-    seasons: []
-  })
+    seasons: [],
+  });
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const [furnitureResponse, electronicsResponse] = await Promise.all([
-          fetch("https://api.escuelajs.co/api/v1/products/?categoryId=3"),
-          fetch("https://api.escuelajs.co/api/v1/products/?categoryId=2"),
-        ])
-
-        const [furnitureData, electronicsData] = await Promise.all([
-          furnitureResponse.json(),
-          electronicsResponse.json(),
-        ])
-
-        // Filtrar productos no deseados de ambas categorías
-        const combinedData = [...furnitureData, ...electronicsData].filter(
-          (product) =>
-            product.title !== "New Product" &&
-            product.title !== "testProduct"
-        )
-
-        // Filtrar productos con imágenes válidas
-        const productsWithValidImages = await Promise.all(
-          combinedData.map(async (item) => {
-            const imageUrl = item.images[0]
-
-            // Verificar si la imagen es válida
-            const isValidImage = await new Promise((resolve) => {
-              const img = new window.Image()
-              img.src = imageUrl
-              img.onload = () => resolve(true)
-              img.onerror = () => resolve(false)
-            })
-
-            return isValidImage
-              ? {
-                  id: item.id,
-                  name: item.title,
-                  price: item.price,
-                  image: imageUrl,
-                  tags: [item.category.name],
-                }
-              : null
-          })
-        )
-
-        // Filtrar productos nulos y actualizar el estado
-        setProducts(productsWithValidImages.filter(Boolean))
+        const response = await fetch(`/api/fetchProducts?page=${currentPage}`);
+        const data = await response.json();
+  
+        if (data.error) {
+          console.error("Error en el servidor:", data.error);
+          console.log("Detalles del error:", data.details);
+          return;
+        }
+  
+        const parsedProducts = data.products.map((item) => ({
+          id: item.product_id,
+          name: item.title,
+          price: item.price,
+          image: item.thumbnails[0][5] || item.thumbnails[0][0], // Usa la versión de alta resolución
+          tags: [item.brand],
+        }));
+  
+        setProducts(parsedProducts);
       } catch (error) {
-        console.error("Error al obtener los productos:", error)
+        console.error("Error al obtener los productos:", error);
       }
-    }
+    };
+  
+    fetchProducts();
+  }, [currentPage]);
+  
 
-    fetchProducts()
-  }, [])
-
-  const filteredProducts = products.filter(product =>
-    (filters.categories.length === 0 || filters.categories.some(cat => product.tags.includes(cat))) &&
-    (filters.brands.length === 0 || filters.brands.some(brand => product.tags.includes(brand))) &&
-    (filters.materials.length === 0 || filters.materials.some(material => product.tags.includes(material))) &&
-    (filters.sizes.length === 0 || filters.sizes.some(size => product.tags.includes(size))) &&
-    (filters.colors.length === 0 || filters.colors.some(color => product.tags.includes(color))) &&
-    (filters.genders.length === 0 || filters.genders.some(gender => product.tags.includes(gender))) &&
-    (filters.seasons.length === 0 || filters.seasons.some(season => product.tags.includes(season))) &&
+  const filteredProducts = products.filter((product) =>
+    (filters.categories.length === 0 || filters.categories.some((cat) => product.tags.includes(cat))) &&
+    (filters.brands.length === 0 || filters.brands.some((brand) => product.tags.includes(brand))) &&
+    (filters.materials.length === 0 || filters.materials.some((material) => product.tags.includes(material))) &&
+    (filters.sizes.length === 0 || filters.sizes.some((size) => product.tags.includes(size))) &&
+    (filters.colors.length === 0 || filters.colors.some((color) => product.tags.includes(color))) &&
+    (filters.genders.length === 0 || filters.genders.some((gender) => product.tags.includes(gender))) &&
+    (filters.seasons.length === 0 || filters.seasons.some((season) => product.tags.includes(season))) &&
     product.price >= priceRange[0] && product.price <= priceRange[1]
-  )
+  );
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sortBy === "price_asc") return a.price - b.price
-    if (sortBy === "price_desc") return b.price - a.price
-    return 0
-  })
+    if (sortBy === "price_asc") return a.price - b.price;
+    if (sortBy === "price_desc") return b.price - a.price;
+    return 0;
+  });
 
-  const productsPerPage = 20
-  const totalPages = Math.ceil(sortedProducts.length / productsPerPage)
+  const productsPerPage = 20;
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
   const paginatedProducts = sortedProducts.slice(
     (currentPage - 1) * productsPerPage,
     currentPage * productsPerPage
-  )
+  );
 
   const handleFilterChange = (category, value) => {
-    setFilters(prev => ({
+    setFilters((prev) => ({
       ...prev,
       [category]: prev[category].includes(value)
-        ? prev[category].filter(item => item !== value)
-        : [...prev[category], value]
-    }))
-    setCurrentPage(1)
-  }
+        ? prev[category].filter((item) => item !== value)
+        : [...prev[category], value],
+    }));
+    setCurrentPage(1);
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -219,9 +194,9 @@ export default function ClothingCatalog() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {paginatedProducts.map((product) => (
-              <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition" href={"/fashion/nombre_prenda/" + product.id}>
+              <Link key={product.id} className="rounded-xl overflow-hidden bg-white shadow pb-6 cursor-pointer hover:brightness-95 transition" href={"/" + product.name + "/" + product.id}>
                 <>
-                  <Image src={product.image} unoptimized alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
+                  <Image src={product.image} alt={product.name} height={100} width={100} className="w-full h-56 object-cover shadow" />
                 </>
                 <div className="p-4">
                   <h3 className="font-semibold">{product.name}</h3>
@@ -260,7 +235,7 @@ export default function ClothingCatalog() {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
 function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortBy, setSortBy }) {
@@ -290,7 +265,7 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
               <Checkbox
                 id={`category-${category}`}
                 checked={filters.categories.includes(category)}
-                onCheckedChange={() => handleFilterChange('categories', category)}
+                onCheckedChange={() => handleFilterChange("categories", category)}
               />
               <Label htmlFor={`category-${category}`} className="ml-2">{category}</Label>
             </div>
@@ -306,7 +281,7 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
               <Checkbox
                 id={`brand-${brand}`}
                 checked={filters.brands.includes(brand)}
-                onCheckedChange={() => handleFilterChange('brands', brand)}
+                onCheckedChange={() => handleFilterChange("brands", brand)}
               />
               <Label htmlFor={`brand-${brand}`} className="ml-2">{brand}</Label>
             </div>
@@ -340,7 +315,7 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
               <Checkbox
                 id={`material-${material}`}
                 checked={filters.materials.includes(material)}
-                onCheckedChange={() => handleFilterChange('materials', material)}
+                onCheckedChange={() => handleFilterChange("materials", material)}
               />
               <Label htmlFor={`material-${material}`} className="ml-2">{material}</Label>
             </div>
@@ -356,7 +331,7 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
               <Checkbox
                 id={`size-${size}`}
                 checked={filters.sizes.includes(size)}
-                onCheckedChange={() => handleFilterChange('sizes', size)}
+                onCheckedChange={() => handleFilterChange("sizes", size)}
               />
               <Label htmlFor={`size-${size}`} className="ml-2">{size}</Label>
             </div>
@@ -372,7 +347,7 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
               <Checkbox
                 id={`color-${color}`}
                 checked={filters.colors.includes(color)}
-                onCheckedChange={() => handleFilterChange('colors', color)}
+                onCheckedChange={() => handleFilterChange("colors", color)}
               />
               <Label htmlFor={`color-${color}`} className="ml-2">{color}</Label>
             </div>
@@ -388,7 +363,7 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
               <Checkbox
                 id={`gender-${gender}`}
                 checked={filters.genders.includes(gender)}
-                onCheckedChange={() => handleFilterChange('genders', gender)}
+                onCheckedChange={() => handleFilterChange("genders", gender)}
               />
               <Label htmlFor={`gender-${gender}`} className="ml-2">{gender}</Label>
             </div>
@@ -404,7 +379,7 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
               <Checkbox
                 id={`season-${season}`}
                 checked={filters.seasons.includes(season)}
-                onCheckedChange={() => handleFilterChange('seasons', season)}
+                onCheckedChange={() => handleFilterChange("seasons", season)}
               />
               <Label htmlFor={`season-${season}`} className="ml-2">{season}</Label>
             </div>
@@ -412,5 +387,5 @@ function Filters({ filters, handleFilterChange, priceRange, setPriceRange, sortB
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-  )
+  );
 }
