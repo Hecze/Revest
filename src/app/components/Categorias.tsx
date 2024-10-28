@@ -32,10 +32,10 @@ const Categorias: React.FC = () => {
     <section className="">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:px-24">
         {/* Componente Categoria con título y ruta de imagen */}
-        <Categoria title="Hombres" imgSrc="/hombres.png" />
-        <Categoria title="Mujeres" imgSrc="/mujeres.png" />
-        <Categoria title="Bebes" imgSrc="/bebes.png" />
-        <Categoria title="Niño" imgSrc="/niños.png" />
+        <Categoria title="Terrazas" imgSrc="/terraza.webp" />
+        <Categoria title="Mini depas" imgSrc="/minidepa.webp" />
+        <Categoria title="Veraniego" imgSrc="/veraniego.webp" />
+        <Categoria title="Mono Ambiente" imgSrc="/monoambiente.webp" />
       </div>
     </section>
   );

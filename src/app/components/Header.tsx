@@ -55,23 +55,23 @@ const Header: React.FC = () => {
       <div className="flex flex-wrap gap-6 justify-around py-4 bg-white lg:px-32 lg:x-44">
         <IconFeature
           Icon={RiArrowGoBackFill}
-          title="DEVOLUCIÓN SIMPLE"
-          subtitle="HASTA 72HS"
+          title="TRASLADOS GRATIS"
+          subtitle="EL MISMO DIA"
         />
         <IconFeature
           Icon={IoTicketOutline}
-          title="MODA CIRCULAR"
+          title="ECONOMÍA CIRCULAR"
           subtitle="EN PERFECTO ESTADO"
         />
         <IconFeature
           Icon={PiPackage}
-          title="ENVÍO GRATIS"
-          subtitle="EN CUALQUIER COMPRA"
+          title="MANTENIMIENTO GRATIS"
+          subtitle="EN TODAS LAS COMPRAS"
         />
         <IconFeature
           Icon={RiMoneyDollarCircleLine}
           title="PRECIOS INCREIBLES"
-          subtitle="HASTA 70% OFF"
+          subtitle="HASTA 60% OFF"
         />
       </div>
     </header>

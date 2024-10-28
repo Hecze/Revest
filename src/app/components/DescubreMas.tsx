@@ -33,19 +33,19 @@ const DescubreMas = () => {
       <h2 className="text-2xl font-bold text-center mb-6">Descubre más de FIDUCCIO</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-12 lg:px-24">
         <DiscoverItem
-          src="/descubre1.webp"
+          src="/depasoñado.webp"
           alt="Descubre 1"
-          text="Disfruta el outfit de tus sueños... y ahorra para lo que más quieras"
+          text="Disfruta del depa de tus sueños... y ahorra para lo que más quieras"
         />
         <DiscoverItem
-          src="/descubre2.webp"
+          src="/diseño.webp"
           alt="Descubre 2"
-          text="Encuentra la moda que se adapta a ti sin perder tu esencia"
+          text="Encuentra los muebles que se adaptan a ti sin perder tu esencia"
         />
         <DiscoverItem
-          src="/descubre3.webp"
+          src="/desinfeccion.webp"
           alt="Descubre 3"
-          text="Proceso de cuidado y desinfección de nuestras prendas"
+          text="Proceso de cuidado y desinfección de nuestros muebles"
         />
       </div>
     </section>
