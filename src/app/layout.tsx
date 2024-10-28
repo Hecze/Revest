@@ -5,7 +5,7 @@ import { IoPersonOutline } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Alquiler de muebles | Fiduccio",
+  title: "Alquiler de Muebles | Fiduccio",
   description: "Alquiler de muebles y artículos para el hogar - ahorra hasta 60%. Servicios de mantenimiento to traslados y reemplazos Gratis",
 };
 
@@ -31,10 +31,12 @@ export default function RootLayout({
           <div className="flex justify-between items-center lg:px-72 py-4 bg-white">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <Link className="text-2xl font-bold mb-4 sm:mb-0 ml-4 translate-y-2" href={"/"}>
-                Fiduccio
-              </Link>
-            </div>
+          <Link className="text-2xl font-bold mb-4 sm:mb-0 ml-4 translate-y-2 lg:translate-y-[-1px] flex items-center" href={"/"}>
+              <img src="/logo.ico" alt="Logo" className="w-8 h-8 mr-2" />
+            Fiduccio
+          </Link>
+        </div>
+
 
             {/* Search bar */}
             <SearchBar />

@@ -60,8 +60,8 @@ const Header: React.FC = () => {
         />
         <IconFeature
           Icon={IoTicketOutline}
-          title="ECONOMÍA CIRCULAR"
-          subtitle="EN PERFECTO ESTADO"
+          title="AYUDA AL PLANETA"
+          subtitle="RENTA, NO COMPRES"
         />
         <IconFeature
           Icon={PiPackage}
