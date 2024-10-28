@@ -26,18 +26,21 @@ const IconFeature: React.FC<IconFeatureProps> = ({ Icon, title, subtitle }) => (
 // Componente para la sección del banner
 const BannerSection: React.FC = () => (
   <div className="relative w-full flex flex-col h-64 bg-[#EF9A9C] overflow-hidden">
-    <Image
-      src="/header-modelo.png"
-      alt="Tendencias que no te puedes perder"
-      width={300}
-      height={300}
-      objectFit="cover"
-      className="rounded-md lg:ml-[32rem]"
-    />
+    <>
+      <Image
+        src="/mueble-inicio.webp"
+        alt="Tendencias que no te puedes perder"
+        layout='fill'
+        objectFit="cover"
+        className="rounded-md lg:ml-[8 rem]"
+      />
+    </>
     <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
       <h1 className="text-4xl font-bold text-white">TENDENCIAS</h1>
       <p className="text-xl text-white">que no te puedes perder</p>
-      <Link className="bg-black text-white px-6 py-2 mt-4 rounded-md" href={"/fashion/catalog"}>VER COLECCIÓN</Link>
+      <Link className="bg-black text-white px-6 py-2 mt-4 rounded-md" href="/catalog">
+        VER COLECCIÓN
+      </Link>
     </div>
   </div>
 );
@@ -49,7 +52,7 @@ const Header: React.FC = () => {
       <BannerSection />
 
       {/* Icons/Features section */}
-      <div className="flex flex-wrap gap-6 justify-around py-4 bg-white lg:px-64 lg:x-44">
+      <div className="flex flex-wrap gap-6 justify-around py-4 bg-white lg:px-32 lg:x-44">
         <IconFeature
           Icon={RiArrowGoBackFill}
           title="DEVOLUCIÓN SIMPLE"

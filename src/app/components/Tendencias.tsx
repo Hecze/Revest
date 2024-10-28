@@ -8,8 +8,9 @@ interface TendenciaProps {
 
 const Tendencia: React.FC<TendenciaProps> = ({ title, imgSrc }) => {
   return (
-    <Link className="relative w-full shadow-md cursor-pointer hover:opacity-90 transition aspect-w-1" style={{ paddingBottom: '200%' }} href={'/fashion/catalog'}>
+    <Link className="relative w-full shadow-md cursor-pointer hover:opacity-90 transition aspect-w-1" style={{ paddingBottom: '200%' }} href={'/catalog'}>
       {/* Imagen de la tendencia justificada a la parte superior */}
+      <>
       <Image
         src={imgSrc}
         alt={title}
@@ -17,7 +18,7 @@ const Tendencia: React.FC<TendenciaProps> = ({ title, imgSrc }) => {
         objectFit="cover"
         objectPosition="top"
         className=""
-      />
+      /></>
 
       {/* Div negro con texto blanco */}
       <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-90 p-2">
@@ -33,10 +34,10 @@ const Tendencias: React.FC = () => {
     <section className="">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
         {/* Aquí llamamos al componente Tendencia con la imagen y el título */}
-        <Tendencia title="Verano" imgSrc="/verano.png" />
-        <Tendencia title="Aesthetic" imgSrc="/aesthetic.png" />
-        <Tendencia title="Elegante" imgSrc="/elegante.png" />
-        <Tendencia title="Tendencia" imgSrc="/tendencia.png" />
+        <Tendencia title="Consolas" imgSrc="/gameroom.webp" />
+        <Tendencia title="Sofas" imgSrc="/sofa.webp" />
+        <Tendencia title="Dormitorio" imgSrc="/dormitorio.webp" />
+        <Tendencia title="Infantil" imgSrc="/infantil.webp" />
       </div>
     </section>
   );

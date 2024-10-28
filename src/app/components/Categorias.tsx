@@ -8,15 +8,16 @@ interface CategoriaProps {
 
 const Categoria: React.FC<CategoriaProps> = ({ title, imgSrc }) => {
   return (
-    <Link className="relative h-36 w-full rounded-xl overflow-hidden shadow-md cursor-pointer hover:opacity-90 transition" href={'/fashion/catalog'}>
+    <Link className="relative h-36 w-full rounded-xl overflow-hidden shadow-md cursor-pointer hover:opacity-90 transition" href={'/catalog'}>
       {/* Imagen recortada para encajar en el contenedor */}
+      <>
       <Image
         src={imgSrc}
         alt={title}
         layout="fill"
         objectFit="cover"
         className="rounded-xl"
-      />
+      /></>
 
       {/* Div blanco con opacidad y bordes redondeados más pronunciados */}
       <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-75 py-1 px-3 rounded-tl-xl rounded-br-xl w-36">
@@ -34,7 +35,7 @@ const Categorias: React.FC = () => {
         <Categoria title="Hombres" imgSrc="/hombres.png" />
         <Categoria title="Mujeres" imgSrc="/mujeres.png" />
         <Categoria title="Bebes" imgSrc="/bebes.png" />
-        <Categoria title="Niños" imgSrc="/niños.png" />
+        <Categoria title="Niño" imgSrc="/niños.png" />
       </div>
     </section>
   );
