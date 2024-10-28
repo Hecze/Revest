@@ -2,26 +2,8 @@ import Image from 'next/image';
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
-type Props = {
-    params: {
-        furniture_id: string;
-        furniture_name: string;
-    }
-}
-
-type ProductData = {
-    product_id: string;
-    title: string;
-    price: number;
-    description: string;
-    category: {
-        name: string;
-    };
-    images: string[];
-};
-
-export default async function FurniturePage({ params }: Props) {
-    let productData: ProductData | null = null;
+export default async function FurniturePage({ params }) {
+    let productData = null;
 
     try {
         const response = await fetch(
@@ -33,7 +15,7 @@ export default async function FurniturePage({ params }: Props) {
         const data = await response.json();
         
         // Filtrar para obtener el producto con el ID correcto
-        const product = data.products.find((item: any) => item.product_id === params.furniture_id);
+        const product = data.products.find((item) => item.product_id === params.furniture_id);
 
         if (product) {
             productData = {
